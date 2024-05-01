@@ -10,18 +10,19 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ingredientes")
-public class Ingrediente {
+@Table(name = "tamanhos")
+public class Tamanho {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idIngrediente;
+    private Long idTamanho;
 
     @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
-    private Double preco;
+    private Double desconto;
 
-    @ManyToMany(mappedBy = "pizzapedida")
-    private Set<PizzaPedida> pizzapedidaHasIngrediente;
+    @OneToMany(mappedBy = "idTamanho")
+    private Set<PizzaPedida> idTamanhoPizzaPedida;
 }

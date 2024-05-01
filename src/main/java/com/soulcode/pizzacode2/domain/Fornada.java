@@ -13,21 +13,18 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "pizzas")
-public class Pizza {
+@Table(name = "fornadas")
+public class Fornada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPizza;
+    private Long idFornada;
 
     @Column(nullable = false)
-    private String nome;
+    private Integer numFornada;
 
     @Column(nullable = false)
-    private Double precoBase;
+    private Integer qtdPizzas;
 
-    @Column
-    private Boolean personalizada;
-
-    @OneToMany(mappedBy = "pizzas")
-    private Set<PizzaPedida> IdPizzaPizzasPedidas;
+    @OneToMany(mappedBy = "fornadas")
+    private Set<Pedido> IdFornadaPedidoes;
 }

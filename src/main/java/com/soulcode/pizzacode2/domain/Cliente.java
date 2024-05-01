@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -31,4 +33,7 @@ public class Cliente {
 
     @Column(nullable = false)
     String senha;
+
+    @OneToMany(mappedBy = "clientes")
+    private Set<Pedido> IdClientePedidoes;
 }
