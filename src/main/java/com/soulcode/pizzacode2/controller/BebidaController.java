@@ -53,7 +53,7 @@ public class BebidaController {
         }
     }
 
-    @DeleteMapping("/excluir/{idBebida}")
+    @DeleteMapping("/{idBebida}")
     public ResponseEntity<?> deleteById(@PathVariable Long idBebida) {
         try {
             Bebida deleteById = bebidaService.deleteById(idBebida);
@@ -63,5 +63,4 @@ public class BebidaController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 }
