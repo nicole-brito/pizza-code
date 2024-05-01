@@ -10,6 +10,7 @@ import lombok.*;
 @Entity
 @Table(name = "bebidas")
 public class Bebida {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBebida;

@@ -55,7 +55,7 @@ public class ClienteControllerTest {
     public void testFindAll() throws Exception {
         when(clienteService.findAll()).thenReturn(Arrays.asList(cliente));
 
-        mockMvc.perform(get("/api/clientes/listadeclientes"))
+        mockMvc.perform(get("/api/clientes/"))
                 .andExpect(status().isOk());
     }
 
@@ -71,7 +71,7 @@ public class ClienteControllerTest {
 
     @Test
     public void testDeleteById() throws Exception {
-        when(clienteService.deleteById(any(Long.class))).thenReturn(cliente);
+        when(clienteService.deleteCliente(any(Long.class))).thenReturn(cliente);
 
         mockMvc.perform(delete("/api/clientes/1"))
                 .andExpect(status().isOk());

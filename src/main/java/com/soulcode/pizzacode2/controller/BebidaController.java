@@ -2,7 +2,6 @@ package com.soulcode.pizzacode2.controller;
 
 
 import com.soulcode.pizzacode2.domain.Bebida;
-import com.soulcode.pizzacode2.model.BebidaDTO;
 import com.soulcode.pizzacode2.service.BebidaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/bebidas")
 @RequiredArgsConstructor
-@Slf4j
+@Slf4j //Essa anotação facilita a criação de logs (from Lombok)
 public class BebidaController {
 
     @Autowired
@@ -29,6 +28,17 @@ public class BebidaController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(bebidas, HttpStatus.OK);
+    }
+
+    @GetMapping("/{idBebida}")
+    public ResponseEntity<?> getBebidaById(@PathVariable Long idBebida) {
+        try {
+            Bebida bebida = bebidaService.findBebidaById(idBebida);
+            return new ResponseEntity<>(bebida, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            log.error("Erro ao buscar a bebida", e);
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/addbebida")
@@ -48,7 +58,7 @@ public class BebidaController {
             Bebida updateBebida = bebidaService.updateBebida(bebida);
             return new ResponseEntity<>(updateBebida, HttpStatus.OK);
         } catch (RuntimeException e) {
-            log.error("Erro ao criar nova bebida", e);
+            log.error("Erro ao editar a bebida", e);
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
