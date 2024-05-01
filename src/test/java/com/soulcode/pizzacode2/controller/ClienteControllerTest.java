@@ -1,4 +1,4 @@
-package com.soulcode.pizzacode2;
+package com.soulcode.pizzacode2.controller;
 
 import com.soulcode.pizzacode2.domain.Cliente;
 import com.soulcode.pizzacode2.service.ClienteService;

@@ -1,6 +1,5 @@
-package com.soulcode.pizzacode2;
+package com.soulcode.pizzacode2.controller;
 
-import com.soulcode.pizzacode2.controller.IngredienteController;
 import com.soulcode.pizzacode2.domain.Ingrediente;
 import com.soulcode.pizzacode2.service.IngredienteService;
 import org.junit.jupiter.api.BeforeEach;
